@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public  class Converter {
+public class Converter {
 
     public static List<Discount> makeDiscountObjects() {
         String csvFile = "/home/ekagga/Desktop/discounts.csv";
@@ -47,7 +47,7 @@ public  class Converter {
     }
 
     public static List<Order> makeOrderObjects() {
-        String csvFile = "/home/ekagga/Desktop/orders.csv";
+        String csvFile = "/home/<user>/Desktop/orders.csv";
         List<Order> orderArrayList = new ArrayList<Order>();
         CSVReader reader = null;
         try {
@@ -81,15 +81,15 @@ public  class Converter {
         String startTime = timeOfDayArr[0];
         String endTime = timeOfDayArr[1];
         Float result[] = new Float[2];
-        if(startTime.contains("PM")) {
+        if (startTime.contains("PM")) {
             result[0] = Float.parseFloat(startTime.replace("PM", "")) + 12;
         } else {
-            result[0] =  Float.parseFloat(startTime.replace("AM", "")) ;
+            result[0] = Float.parseFloat(startTime.replace("AM", ""));
         }
-        if(endTime.contains("PM")) {
-            result[1] =  Float.parseFloat(endTime.replace("PM", "")) + 12;
+        if (endTime.contains("PM")) {
+            result[1] = Float.parseFloat(endTime.replace("PM", "")) + 12;
         } else {
-            result[1] =  Float.parseFloat(endTime.replace("AM", "")) ;
+            result[1] = Float.parseFloat(endTime.replace("AM", ""));
         }
         return result;
     }

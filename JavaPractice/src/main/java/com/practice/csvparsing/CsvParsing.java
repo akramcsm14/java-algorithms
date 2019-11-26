@@ -15,25 +15,15 @@ public class CsvParsing {
         List<Order> orderArrayList = converter.makeOrderObjects();
         List<Output> outputs = new ArrayList<Output>();
         List<Discount> discounts;
-//        for (Discount discount:
-//                discountArrayList) {
-//            System.out.println(discount.toString());
-//        }
 
-        for (Order order:
-                orderArrayList) {
-//            System.out.println(order.toString());
+        for (Order order : orderArrayList) {
             discounts = availableDiscountForOrder(discountArrayList, order);
-//            for (Discount discount:
-//                    discounts) {
-//                System.out.println(discount.toString());
-//            }
             Output output;
             if (discounts.size() > 0) {
                 if (discounts.get(0).getMaxDiscount() != 0) {
                     output = new Output(order.getOrderId(), discounts.get(0).getMaxDiscount(), discounts.get(0).getDiscountCode());
                 } else {
-                    output =  new Output(order.getOrderId(), discounts.get(0).getDiscount(), discounts.get(0).getDiscountCode());
+                    output = new Output(order.getOrderId(), discounts.get(0).getDiscount(), discounts.get(0).getDiscountCode());
                 }
             } else {
                 output = new Output(order.getOrderId(), 0, "");
@@ -41,8 +31,8 @@ public class CsvParsing {
             outputs.add(output);
         }
 
-        for (Output output:
-             outputs) {
+        for (Output output :
+                outputs) {
             System.out.println(output.toString());
         }
     }
@@ -52,7 +42,7 @@ public class CsvParsing {
         List<Discount> discounts2 = new ArrayList<Discount>();
         List<Discount> discounts3 = new ArrayList<Discount>();
         //Filtering Order by time slot
-        for (Discount discount:
+        for (Discount discount :
                 discountArrayList) {
             if (isOrderedInTimePeriod(order.getOrderTime(), discount.getStartTime(), discount.getEndTime())) {
                 discounts.add(discount);
@@ -64,19 +54,15 @@ public class CsvParsing {
 //            System.out.println(discount.toString());
 //        }
         //Filter by minimum amount
-        for (Discount discount:
+        for (Discount discount :
                 discounts) {
             //System.out.println(discount.getMinimumBillAmount() +":"+order.getBillAmount());
             if (discount.getMinimumBillAmount() <= order.getBillAmount()) {
                 discounts2.add(discount);
             }
         }
-//        for (Discount discount:
-//                discounts2) {
-//            System.out.println(discount.toString());
-//        }
         //Filter By Payment Method
-        for (Discount discount:
+        for (Discount discount :
                 discounts2) {
             if (discount.getPaymentMethod().equals("")) {
                 discounts3.add(discount);
