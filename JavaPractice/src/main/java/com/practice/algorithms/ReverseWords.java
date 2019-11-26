@@ -6,13 +6,19 @@
 package com.practice.algorithms;
 
 public class ReverseWords {
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         String result = reverseWordsTraditional("-  I love my   India       ");
-        String result1 = reverseWords("-  I love my   India       ");
+        String result1 = reverseWords("-  I love my   India     so much  ");
         System.out.println(result);
         System.out.println(result1);
     }
 
+    /**
+     * This function takes a string input and reverses the string word wise
+     * uses old school way, and does not use any build in function
+     * @param src
+     * @return
+     */
     private static String reverseWords(String src) {
         StringBuilder stringBuilderTemp = new StringBuilder();
         StringBuilder stringBuilder = new StringBuilder();
@@ -21,7 +27,6 @@ public class ReverseWords {
                 stringBuilderTemp.append(src.charAt(i));
             }
             else {
-//                System.out.println(stringBuilderTemp.length());
                 if (stringBuilderTemp.length() == 0) {
                     stringBuilder.append(" ");
                 }
@@ -35,6 +40,12 @@ public class ReverseWords {
         return stringBuilder.toString();
     }
 
+    /**
+     * This function takes a string input and reverses the string word wise
+     * uses build in function split
+     * @param src
+     * @return
+     */
     private static String reverseWordsTraditional(String src) {
         StringBuilder stringBuilder = new StringBuilder();
         String[] temp = src.split(" ");
