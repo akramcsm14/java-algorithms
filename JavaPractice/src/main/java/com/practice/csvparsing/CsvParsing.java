@@ -54,8 +54,7 @@ public class CsvParsing {
 //            System.out.println(discount.toString());
 //        }
         //Filter by minimum amount
-        for (Discount discount :
-                discounts) {
+        for (Discount discount : discounts) {
             //System.out.println(discount.getMinimumBillAmount() +":"+order.getBillAmount());
             if (discount.getMinimumBillAmount() <= order.getBillAmount()) {
                 discounts2.add(discount);

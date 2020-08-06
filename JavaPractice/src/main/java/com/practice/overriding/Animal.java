@@ -1,7 +1,9 @@
 package com.practice.overriding;
 
-public class Parent {
-    public void print(){
+public class Animal {
+    Integer x = 10;
+    protected void print(){
         System.out.println("Parent");
     }
+
 }
